@@ -1,0 +1,15 @@
+{
+  "name": "ORBit",
+  "version": "1.0.0",
+  "description": "API for ORBit",
+  "scripts": {
+    "start" : "node server.js"
+  },
+  "author": "Aki Gao",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.2"
+  }
+}
