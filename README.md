@@ -1,2 +1,2 @@
-# ORBit
-API and back end for ORBit
+# Orbit
+API for Orbit
