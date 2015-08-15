@@ -3,7 +3,7 @@ bodyParser = require('body-parser');
 
 app.get('/api/users/:username/devices', function(req, res){
 	user.getDevices(req.params.username, function(err, devices){
-		var jsonResponse = (devices ? {devices: devices} : {error: "invalid username parameter"};
+		var jsonResponse = devices ? {devices: devices} : {error: "invalid username parameter"};
 		res.json(jsonResponse);
 	});
 });
