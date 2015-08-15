@@ -1,4 +1,6 @@
-var app = require('./utils/app');
+app = require('./utils/app');
+
+require('./controllers');
 
 //configurations of nessecary modules
 var http = require('http');

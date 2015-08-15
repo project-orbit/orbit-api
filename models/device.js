@@ -1,4 +1,5 @@
-var db = appRequire('config/db');
+var db = appRequire('utils/db'),
+mongoose = require('mongoose');
 
 // function userin (deviceName) {
 // 	return deviceName = 
@@ -6,17 +7,32 @@ var db = appRequire('config/db');
 
 // UserSchema.path('deviceName').validate(function(deviceName)'Device cannot be blank');
 
-var deviceSchema = new mongoose.Schema({
-	macadr: {
+var deviceSchema = mongoose.Schema({
+	macAdress: {
 		type: String,
 		required: true
 	},
 	deviceName: { 
 		type: String,
-		default: 'Unnamed Device',
+		default: 'Unnamed Device'
 		//set: userin
 	}
 })
 
 //compile schema to model
-var Device = module.exports = db.model('device', deviceSchema)
+var device = db.model('device', deviceSchema);
+
+module.exports.schema = deviceSchema;
+
+module.exports = function(){
+	
+	function getModel(){
+		return device;
+	}
+
+	function getSchema(){
+		return deviceSchema;
+	}
+
+	return {getModel :getModel, getSchema: getSchema};
+}

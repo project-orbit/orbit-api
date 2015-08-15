@@ -1,22 +1,30 @@
-var db = appRequire('config/db');
-
+var db = appRequire('utils/db'),
+device = require('./device')(),
+mongoose = require('mongoose');
 // function hasher (val) { 
 // 	return val = 
 // }
 
-var userSchema = new mongoose.Schema({
-	userName: { 
+var userSchema = mongoose.Schema({
+	firstName:{
+    type: String,
+    required: true
+  },
+  lastName:{
+    type: String,
+    required: true
+  },
+  username: { 
     	type: String,
     	unique: true,
-    	required: true,
+    	required: true
   	},
   	password: { 
     	type: String, 
-    	required: true,
+    	required: true
     	//validate: hasher
   	},
-  	devices: [deviceSchema]
+  	devices: [device.getSchema]
 });
 
-var User = module.exports = db.model('user', userSchema)
-console.log("Created model");
+var user = module.exports = db.model('user', userSchema);

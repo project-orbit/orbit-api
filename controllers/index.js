@@ -1,8 +1,6 @@
-var express = require('express');
-var router = express.Router();
+require('./api');
 
-router.get('/', function(req, res, next) {
-	res.render('index');
+app.get('*', function(req, res, next) {
+	res.json('not a valid request');
 });
 
-module.exports = router;
