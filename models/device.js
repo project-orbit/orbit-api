@@ -8,31 +8,28 @@ mongoose = require('mongoose');
 // UserSchema.path('deviceName').validate(function(deviceName)'Device cannot be blank');
 
 var deviceSchema = mongoose.Schema({
-	macAdress: {
-		type: String,
-		required: true
-	},
+	_id: { 
+      type: String,
+      unique: true,
+      required: true
+    },
+
 	deviceName: { 
 		type: String,
-		default: 'Unnamed Device'
-		//set: userin
-	}
-})
+		required: true 
+	},
 
-//compile schema to model
-var device = db.model('device', deviceSchema);
+	user: {type: String, ref: 'User'},
+
+	alias: String
+});
+
+deviceSchema.virtual('macAddress').get(function(){
+	return this._id;
+});
 
 module.exports.schema = deviceSchema;
 
-module.exports = function(){
-	
-	function getModel(){
-		return device;
-	}
+//compile schema to model
+module.exports.model = db.model('Device', deviceSchema);
 
-	function getSchema(){
-		return deviceSchema;
-	}
-
-	return {getModel :getModel, getSchema: getSchema};
-}

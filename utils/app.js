@@ -6,10 +6,10 @@ require('dotenv').load();
 
 var path = require('path'),
 express = require('express'),
-bodyParser = require('body-parser'),
+bodyParser = require('body-parser');
 
-//initialize app to global scope
-app = module.exports = express();
+//initialize app
+var app = module.exports = express();
 
 //add middleware
 app.use(bodyParser.urlencoded({ extended: true}));
