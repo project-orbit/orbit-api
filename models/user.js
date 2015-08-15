@@ -1,10 +1,8 @@
-var mongoose = require("mongoose");
+var db = appRequire('config/db');
 
-var db = mongoose.connect('mongodb://');
-
-function hasher (val) { 
-	return val = 
-}
+// function hasher (val) { 
+// 	return val = 
+// }
 
 var userSchema = new mongoose.Schema({
 	userName: { 
@@ -15,10 +13,10 @@ var userSchema = new mongoose.Schema({
   	password: { 
     	type: String, 
     	required: true,
-    	validate: hasher
+    	//validate: hasher
   	},
   	devices: [deviceSchema]
 });
 
-var User = db.model('user', userSchema)
+var User = module.exports = db.model('user', userSchema)
 console.log("Created model");

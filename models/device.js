@@ -1,10 +1,8 @@
-var mongoose = require("mongoose");
+var db = appRequire('config/db');
 
-var db = mongoose.connect('mongodb://');
-
-function userin (deviceName) {
-	return deviceName = 
-}
+// function userin (deviceName) {
+// 	return deviceName = 
+// }
 
 // UserSchema.path('deviceName').validate(function(deviceName)'Device cannot be blank');
 
@@ -16,11 +14,9 @@ var deviceSchema = new mongoose.Schema({
 	deviceName: { 
 		type: String,
 		default: 'Unnamed Device',
-		set: userin
+		//set: userin
 	}
 })
 
 //compile schema to model
-
-var Device = db.model('device', deviceSchema)
-console.log("Created model");
+var Device = module.exports = db.model('device', deviceSchema)
