@@ -58,6 +58,10 @@ app.delete('/api/devices/:macAddress', function(req, res){
 						jsonResponse.push({message: "success", removed: device});
 					}
 					console.log(jsonResponse);
+
+					io.on('connection', function(socket){
+						socket.emit(device._id, 'deleted');
+					});
 					res.json(jsonResponse);
 				}
 			);	
