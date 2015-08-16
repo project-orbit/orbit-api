@@ -1,9 +1,6 @@
 var db = appRequire('utils/db'),
 device = require('./device'),
 mongoose = require('mongoose');
-// function hasher (val) { 
-// 	return val = 
-// }
 
 var deviceModel = device.model;
 
@@ -30,12 +27,7 @@ var userSchema = mongoose.Schema({
   },
 
   devices: {
-    type: [{type: String, ref: 'Device'}]
-      //,
-      // get: function(devices){
-      //   console.log(devices);
-      //   return devices;
-      // }
+    type: [{type: String, ref: 'Device', unique: true}]
   }
 });
 

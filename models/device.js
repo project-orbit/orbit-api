@@ -1,12 +1,6 @@
 var db = appRequire('utils/db'),
 mongoose = require('mongoose');
 
-// function userin (deviceName) {
-// 	return deviceName = 
-// }
-
-// UserSchema.path('deviceName').validate(function(deviceName)'Device cannot be blank');
-
 var deviceSchema = mongoose.Schema({
 	_id: { 
       type: String,
@@ -21,7 +15,7 @@ var deviceSchema = mongoose.Schema({
 
 	user: {type: String, ref: 'User'},
 
-	alias: String
+	alias: {type: String, default: null}
 });
 
 deviceSchema.virtual('macAddress').get(function(){
@@ -30,6 +24,5 @@ deviceSchema.virtual('macAddress').get(function(){
 
 module.exports.schema = deviceSchema;
 
-//compile schema to model
 module.exports.model = db.model('Device', deviceSchema);
 
