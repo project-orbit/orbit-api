@@ -2,7 +2,8 @@ var User = appRequire('/models/user'),
 Device = appRequire('/models/device').model;
 
 app.get('/api/users/:username/devices', function(req, res){
-	User.getDevices(req.params.username, function(err, devices){
+	User.getDevices(req.params.username, function(err, user){
+		var devices = user.devices ? [] : devices
 		var jsonResponse = err ? {error: "unable to get devices"} : {devices: devices};
 		res.json(jsonResponse);
 	});

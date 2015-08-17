@@ -41,7 +41,7 @@ userSchema.statics = {
   },
   getDevices: function(username, callback){
     this.findById(username, function(err, user){
-    callback(err, user.devices);
+      callback(err, user);
     });
   }
 }

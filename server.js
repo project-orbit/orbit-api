@@ -1,7 +1,5 @@
 app = require('./utils/app');
 
-require('./controllers');
-
 //configurations of nessecary modules
 var http = require('http');
 
@@ -22,3 +20,5 @@ io.on('connection', function(socket){
 		io.emit(macAddress, 'disconnected');
 	})
 });
+
+require('./controllers');
